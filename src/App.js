@@ -3,9 +3,18 @@ import menu from "./menu";
 import { useEffect, useState } from "react";
 
 const MainContainer = styled.main`
+  @font-face {
+    font-family: "Pretendard-Regular";
+    src: url("https://cdn.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff")
+      format("woff");
+    font-weight: 400;
+    font-style: normal;
+  }
+  border-radius: 5px;
+  font-family: "Pretendard-Regular";
   width: 50rem;
   height: 50rem;
-  background-color: aliceblue;
+  background-color: #fef2f4;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -14,6 +23,18 @@ const MainContainer = styled.main`
     margin-top: 5rem;
     line-height: 0.5rem;
     font-size: 3rem;
+    @keyframes textBlink {
+      0% {
+        color: black;
+      }
+      50% {
+        color: #d14d72;
+      }
+      100% {
+        color: black;
+      }
+    }
+    animation: textBlink 3s ease-in infinite;
   }
   > h2 {
     font-size: 1.5rem;
@@ -22,19 +43,42 @@ const MainContainer = styled.main`
   }
   > h3 {
     font-size: 2rem;
+    color: black;
   }
   > button {
     width: 10rem;
     height: 3.7rem;
     cursor: pointer;
-    background-color: white;
+    background-color: #fcc8d1;
     color: black;
     font-size: 1rem;
     margin-bottom: 1rem;
+    border: 0;
+    border-radius: 5px;
+    outline: 0;
     &:hover {
-      background-color: black;
+      background-color: #d14d72;
       color: white;
       transition: 0.3s;
+    }
+  }
+  @media (max-width: 800px) {
+    width: 20rem;
+    height: 40rem;
+    > h1 {
+      margin-top: 3rem;
+      font-size: 2rem;
+    }
+    > h2 {
+      font-size: 1.2rem;
+      margin-bottom: 1.2rem;
+    }
+    > h3 {
+      font-size: 1.5rem;
+    }
+    > button {
+      width: 10rem;
+      height: 2rem;
     }
   }
 `;
@@ -74,7 +118,7 @@ function App() {
         <h2>오늘 뭐 먹지?</h2>
         <h3>🤤 {food} 🤤</h3>
         <button onClick={onClickRecommendFoodButton} type="button">
-          {isFirstClick ? "추천받기" : "다시추천받기"}
+          {isFirstClick ? "추천받기" : "다시 추천받기"}
         </button>
         <div className="adfit"></div>
       </MainContainer>
